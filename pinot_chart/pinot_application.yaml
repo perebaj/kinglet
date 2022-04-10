@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pinot
+  namespace: pinot
+spec:
+  project: default
+  source:
+    chart: pinot
+    repoURL: https://raw.githubusercontent.com/apache/pinot/master/kubernetes/helm
+    # targetRevision: 1.16.1
+    helm:
+      releaseName: sealed-secrets
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: kubeseal
